@@ -14,7 +14,7 @@ You will need some extra dependencies to use maCe to the fullest.
 - valgrind
 - gcc
 - gdb 
-- bear 
+- bear(optional) 
 - make
 
 #### Usage:
