@@ -10,7 +10,7 @@ PROGRAMNAME=mace
 
 working_dir=$(pwd)
 
-array=(valgrind gdb bear gcc make)
+array=(valgrind gdb gcc make)
 doing="$(echo $1 | tr '[:upper:]' '[:lower:]')"
 opt2=$2
 
@@ -146,11 +146,19 @@ function __run_main__ {
 		echo "Project ${bold}$opt2${normal} was created"
 
 	elif [[ $doing == "compile" ]]; then
-		flag="$(echo $opt2 | tr '[:upper:]' '[:lower:]')"
-		if [[ $flag == "--no_json" ]]; then
-			(make)
+		flag="$(echo $opt2 | tr '[:upper:]' '[:lower:]')"	
+		if hash bear >/dev/null 2>&1;
+		then
+			case $flag in
+				--no_json)
+					(make)
+					;;
+				*)
+					(bear -- make)
+					;;
+			esac
 		else
-			(bear -- make)
+			(make)
 		fi
 
 	elif [[ $doing == "project" ]]; then
