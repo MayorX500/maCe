@@ -83,7 +83,7 @@ memleak: \$(SOURCES_OBJ) \$(MY_LIBS_OBJ)
 	\$(CC) \$(MEMLEAK) \$(CFLAGS)  \$(SOURCES_OBJ) -o \$(PROGS)
 
 clean:
-	rm \$(ODIR) -rf
+	rm \$(ODIR) -r
 	rm \$(PROGS)
 
 run:
